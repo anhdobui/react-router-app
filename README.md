@@ -1,3 +1,119 @@
+#Set up prettier eslint
+
+```bash
+npm i prettier @eslint/js globals eslint-plugin-react-hooks eslint-plugin-react-refresh typescript-eslint eslint -D
+```
+
+.editorconfig
+
+```
+[*]
+indent_size = 2
+indent_style = space
+```
+
+.prettierrc
+
+```
+{
+  "arrowParens": "always",
+  "semi": false,
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "endOfLine": "auto",
+  "useTabs": false,
+  "singleQuote": true,
+  "printWidth": 120,
+  "jsxSingleQuote": true
+}
+```
+
+.prettierignore
+
+```
+node_modules/
+dist/
+build/
+.react-router/
+```
+
+eslint.config.js
+
+```
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist', 'node_modules', 'build', '.react-router']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser
+    }
+  }
+])
+```
+
+package.json
+"scripts": {
+...
+"start:csr": "vite preview",
+"prettier": "prettier --check .",
+"prettier:fix": "prettier --write .",
+"lint": "eslint . --ext .ts,.tsx",
+"lint:fix": "eslint . --ext .ts,.tsx --fix"
+},
+
+vite.config.ts
+export default defineConfig({
+css: {
+devSourcemap: true
+},
+preview: {
+port: 3000
+},
+server: {
+port: 3000
+},
+plugins: [tailwindcss(), reactRouter(), tsconfigPaths()]
+})
+set up rule eslint:
+export default defineConfig([
+globalIgnores(['dist']),
+{
+...
+rules: {
+'react-refresh/only-export-components': 'off',
+'no-empty-pattern': 'off'
+}
+}
+])
+
+Extentions:
+ESLint
+Prettier - Code formatter
+
+Setting:
+Format On Save:true
+JavaScript › Preferences: Import Module Specifier : non-relative
+TypeScript › Preferences: Import Module Specifier : non-relative
+
+Note:
+file react-router.config.ts
+ssr : true -> script : npm run start
+ssr : false -> script : npm run start:csr
+
 # Welcome to React Router!
 
 A modern, production-ready template for building full-stack React applications using React Router.
