@@ -1,4 +1,4 @@
-import { Welcome } from '~/welcome/welcome'
+import Layout from '~/layouts/main-layout'
 import type { Route } from './+types/home'
 
 export function meta({}: Route.MetaArgs) {
@@ -6,5 +6,9 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />
+  return (
+    <Layout>
+      <h1>Hello</h1>
+    </Layout>
+  )
 }
