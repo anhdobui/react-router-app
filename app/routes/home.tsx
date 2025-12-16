@@ -1,8 +1,8 @@
 import Layout from '~/layouts/main-layout'
-import type { Route } from './+types/home'
+import type { Handle } from '~/types'
 
-export function meta({}: Route.MetaArgs) {
-  return [{ title: 'New React Router App' }, { name: 'description', content: 'Welcome to React Router!' }]
+export const handle: Handle = {
+  breadcrumb: 'Home'
 }
 
 export default function Home() {

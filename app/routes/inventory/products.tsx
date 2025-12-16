@@ -1,3 +1,8 @@
+import type { Handle } from '~/types'
+
+export const handle: Handle = {
+  breadcrumb: 'Products'
+}
 export default function InventoryProducts() {
   return (
     <div className='space-y-2'>

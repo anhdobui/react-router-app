@@ -33,8 +33,8 @@ const items: Array<{
     title: 'Inventory',
     icon: Grid2x2Check,
     children: [
-      { title: 'Products', url: '/inventory/products' },
-      { title: 'Stock', url: '/inventory/stock' }
+      { title: 'Products', url: '/products' },
+      { title: 'Stock', url: '/stock' }
     ]
   }
 ]
@@ -67,7 +67,7 @@ export function AppSidebar() {
 
                 // ✅ Có children: bọc Collapsible để xổ xuống
                 return (
-                  <Collapsible key={item.title} defaultOpen={false} className='group/collapsible'>
+                  <Collapsible key={item.title} defaultOpen={true} className='group/collapsible'>
                     <SidebarMenuItem>
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton>

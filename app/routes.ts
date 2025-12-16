@@ -2,10 +2,7 @@ import { type RouteConfig, index, route } from '@react-router/dev/routes'
 
 export default [
   index('routes/home.tsx'),
-  route('inventory', 'routes/inventory/_layout.tsx', [
-    // /inventory
-    index('routes/inventory/_index.tsx'),
-
+  route('/', 'routes/inventory/_index.tsx', [
     // /inventory/products
     route('products', 'routes/inventory/products.tsx'),
 
